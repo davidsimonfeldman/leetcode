@@ -33,6 +33,17 @@ FROM my_numbers
 GROUP BY num
 HAVING count(*) = 1
 
+
+
+# Write your MySQL query statement below
+ SELECT
+max(num) num from
+(
+ select distinct  num,   COUNT(num)  
+FROM my_numbers
+group by num
+ having COUNT(num)=1)g
+
 UNION ALL
 SELECT NULL
 
