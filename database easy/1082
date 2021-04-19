@@ -82,3 +82,12 @@ order by 2 desc
  from x 
  where x.t = ( select  max(t) m from x  )
  
+ 
+ SELECT seller_id
+FROM Sales
+GROUP BY seller_id
+HAVING SUM(PRICE) >= all (
+    SELECT SUM(PRICE)
+    FROM Sales
+    GROUP BY seller_id
+)
