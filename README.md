@@ -1,3 +1,3 @@
 # leetcode
 leetcode problems and solutions
-this repository contain sql questions and their solutions 
+this repository contain database questions and their solutions in sql/mysql
