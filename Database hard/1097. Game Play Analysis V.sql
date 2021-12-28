@@ -126,4 +126,14 @@ GROUP BY r.event_date
 
 
 
+select i_date install_dt , max(i_count) installs, sum(ind_next_day)/max(i_count) Day1_retention
+from
+  (select *
+  , min(event_date) over(partition by player_id) i_date
+  ,count(player_id) over(partition by event_date) i_count
+  ,case when lead(event_date) over(partition by player_id order by event_date )-1 = min(event_date) over(partition by player_id) then 1 else 0 end ind_next_day
+from Activity) a
+ group by i_date
+
+ 
 
